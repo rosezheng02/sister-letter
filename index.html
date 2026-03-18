@@ -6,29 +6,29 @@
   <title>给妹妹的成人礼与高考加油信</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
   <style>
     :root{
       --display:"Ma Shan Zheng",cursive;
-      --ui:"ZCOOL XiaoWei",serif;
-      --ink:#1b1a18;
-      --paper:#f6f1e7;
-      --rose:#c3565a;
-      --gold:#d8b36c;
-      --emerald:#2c6e6c;
+      --ui:"ZCOOL KuaiLe",cursive;
+      --ink:#2b1f18;
+      --paper:#fff6e9;
+      --rose:#ff7aa2;
+      --gold:#ffc86b;
+      --emerald:#47b7a5;
       --shadow:0 20px 60px rgba(30,20,10,.25);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:"ZCOOL XiaoWei",serif;
+      font-family:"ZCOOL KuaiLe",cursive;
       font-size:18.5px;
       color:var(--ink);
       background:
-        radial-gradient(900px 700px at 10% 85%, rgba(44,110,108,.12), transparent 60%),
-        radial-gradient(1200px 600px at 80% -10%, rgba(216,179,108,.25), transparent 60%),
-        radial-gradient(800px 600px at 10% 10%, rgba(195,86,90,.2), transparent 55%),
-        linear-gradient(180deg, #fbf7ef 0%, #f2e7d5 100%);
+        radial-gradient(900px 700px at 10% 85%, rgba(71,183,165,.18), transparent 60%),
+        radial-gradient(1200px 600px at 80% -10%, rgba(255,200,107,.28), transparent 60%),
+        radial-gradient(800px 600px at 10% 10%, rgba(255,122,162,.22), transparent 55%),
+        linear-gradient(180deg, #fff8ef 0%, #ffe8d2 100%);
       min-height:100dvh;
       -webkit-font-smoothing:antialiased;
     }
@@ -116,7 +116,7 @@
       background:linear-gradient(180deg, rgba(246,241,231,0), rgba(246,241,231,.95));
     }
     .letter-wrap.expanded{max-height:1000px;}
-    #toggleLetter{margin-top:12px;}
+    #toggleLetter{margin-top:22px;}
     .signature{
       margin-top:14px; font-family:"Ma Shan Zheng",cursive; font-size:24px;
       text-align:right;
@@ -128,8 +128,8 @@
     .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
     .chip{
       font-family:var(--ui);
-      border:1px solid rgba(40,30,20,.2);
-      padding:6px 10px; border-radius:999px; font-size:12px; background:#fff9f1;
+      border:1px solid rgba(40,30,20,.15);
+      padding:6px 10px; border-radius:999px; font-size:12px; background:#fff0f6;
     }
     .chip.active{
       background:linear-gradient(90deg,#c3565a,#e18a8e);
@@ -137,11 +137,11 @@
     }
     .section{
       margin-top:28px;
-      background:rgba(255,255,255,.65);
-      border:1px solid rgba(50,35,20,.12);
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(50,35,20,.1);
       border-radius:20px;
       padding:16px;
-      box-shadow:0 16px 40px rgba(50,30,15,.12);
+      box-shadow:0 16px 40px rgba(50,30,15,.08);
     }
     .section h2{
       font-family:var(--display);
@@ -159,26 +159,64 @@
     }
     .card{
       background:#fffaf3; border:1px solid rgba(50,30,15,.12);
-      border-radius:16px; padding:12px; min-height:120px;
+      border-radius:18px; padding:12px; min-height:120px;
       position:relative; overflow:hidden;
     }
-    .pouch{cursor:pointer; transition:transform .2s ease, box-shadow .2s ease; padding-top:18px;}
+    .card{
+      animation:cardWiggle 6s ease-in-out infinite;
+    }
+    .card:nth-child(2){animation-delay:1s}
+    .card:nth-child(3){animation-delay:2s}
+    .card:nth-child(4){animation-delay:3s}
+    @keyframes cardWiggle{
+      0%,100%{transform:rotate(0deg)}
+      50%{transform:rotate(-0.6deg)}
+    }
+    .pouch{cursor:pointer; transition:transform .2s ease, box-shadow .2s ease; padding-top:34px; min-height:170px;}
     .pouch:hover{transform:translateY(-2px)}
-    .pouch{border-radius:18px 18px 26px 26px; background:linear-gradient(180deg,#fff6e7,#f5e2c6);} 
+    .pouch{
+      border-radius:24px 24px 34px 34px;
+      background:linear-gradient(180deg,#ffe9c8,#ffd6a6);
+      border:2px solid rgba(180,120,60,.2);
+    } 
     .pouch:before{
-      content:""; position:absolute; left:10px; right:10px; top:8px; height:16px;
-      background:linear-gradient(180deg,#f0d4a8,#e6be87); border-radius:12px; opacity:.9;
-      box-shadow:inset 0 -2px 0 rgba(100,70,20,.15);
+      content:""; position:absolute; left:16px; right:16px; top:10px; height:12px;
+      background:linear-gradient(180deg,#f2c58f,#e5a86a); border-radius:999px; opacity:.9;
+      box-shadow:inset 0 -2px 0 rgba(120,70,20,.15);
     }
     .pouch:after{
-      content:""; position:absolute; top:4px; left:50%; transform:translateX(-50%);
-      width:26px; height:10px; border-radius:999px; background:#c3565a;
-      box-shadow:0 2px 0 rgba(0,0,0,.15);
+      content:""; position:absolute; top:16px; left:20px; right:20px; height:6px;
+      border-top:2px dashed rgba(120,70,20,.45);
+    }
+    .pouch .cord{
+      position:absolute; top:2px; left:50%; transform:translateX(-50%);
+      width:70px; height:20px;
+    }
+    .pouch .cord:before,
+    .pouch .cord:after{
+      content:""; position:absolute; width:22px; height:22px; border-radius:50%;
+      border:2px solid rgba(120,70,20,.5);
+      top:0;
+    }
+    .pouch .cord:before{left:0}
+    .pouch .cord:after{right:0}
+    .pouch-title{
+      font-family:var(--display);
+      font-size:22px;
+      text-align:center;
+      letter-spacing:2px;
+      margin-top:8px;
     }
     .pouch .pouch-content{
-      max-height:0; opacity:0; overflow:hidden; transform:translateY(6px);
-      transition:all .35s ease;
-      font-size:16px; line-height:1.6;
+      position:absolute; left:10px; right:10px; top:74px;
+      background:#fff9ef; border:2px dashed rgba(180,120,60,.35);
+      border-radius:10px; padding:12px; font-size:15px; line-height:1.6;
+      box-shadow:0 10px 24px rgba(0,0,0,.12);
+      transform:translateY(20px); opacity:0;
+      transition:transform .4s ease, opacity .4s ease;
+    }
+    .pouch.open .pouch-content{
+      transform:translateY(-4px); opacity:1;
     }
     .pouch.open{box-shadow:0 16px 34px rgba(50,30,15,.22)}
     .pouch.open .pouch-content{max-height:200px; opacity:1; transform:translateY(0)}
@@ -208,7 +246,7 @@
     .btn{
       font-family:var(--ui);
       appearance:none; border:none; width:100%; padding:12px 14px;
-      border-radius:14px; background:linear-gradient(90deg,#c3565a,#e18a8e);
+      border-radius:14px; background:linear-gradient(90deg,#ff7aa2,#ffc86b);
       color:#fff; font-size:16px; letter-spacing:.5px; box-shadow:0 8px 18px rgba(120,40,40,.25);
       position:relative; overflow:hidden;
     }
@@ -283,16 +321,15 @@
     }
 
     .marquee{
-      overflow-x:auto;
-      overflow-y:hidden;
-      -webkit-overflow-scrolling:touch;
+      overflow:hidden;
       border-radius:18px;
       border:1px solid rgba(50,30,15,.12);
       background:linear-gradient(180deg,#fff9f0,#f3e1c7);
       box-shadow:0 12px 28px rgba(50,30,15,.18);
       padding:12px;
       cursor:grab;
-      touch-action:pan-x;
+      touch-action:none;
+      user-select:none;
     }
     .marquee.dragging{cursor:grabbing;}
     .marquee-track{
@@ -301,8 +338,8 @@
       will-change:transform;
     }
     .marquee-item{
-      min-width:80vw;
-      max-width:80vw;
+      min-width:72vw;
+      max-width:72vw;
       background:#fffaf3;
       border:8px solid #f7ead6;
       border-radius:14px;
@@ -311,7 +348,7 @@
       text-align:center;
     }
     .marquee-item img{
-      width:100%; height:80vh; object-fit:contain; display:block;
+      width:100%; height:75vh; object-fit:contain; display:block;
       background:#f8f1e4;
     }
     .marquee-item .cap{
@@ -324,11 +361,88 @@
       background:#fffaf0; border:1px solid rgba(50,30,15,.15);
       border-radius:14px; padding:14px; font-size:16px; line-height:1.6;
     }
+
+    .stickers{
+      position:fixed; inset:0; z-index:1; pointer-events:none;
+    }
+    .sticker{
+      position:absolute; font-size:22px; filter:drop-shadow(0 6px 10px rgba(0,0,0,.12));
+      animation:floaty 6s ease-in-out infinite;
+      cursor:pointer; pointer-events:auto;
+    }
+    .sticker.s1{left:8px; top:140px; animation-delay:0s}
+    .sticker.s2{right:10px; top:200px; animation-delay:1s}
+    .sticker.s3{left:12px; bottom:160px; animation-delay:2s}
+    .sticker.s4{right:14px; bottom:140px; animation-delay:3s}
+    .sticker.s5{left:50%; top:60px; transform:translateX(-50%); animation-delay:1.5s}
+    @keyframes floaty{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+    .sticker.pop{animation:pop .35s ease}
+    @keyframes pop{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.3)}
+      100%{transform:scale(1)}
+    }
+
+    .twinkle{
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.6) 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.6) 0 1px, transparent 2px),
+        radial-gradient(circle at 50% 70%, rgba(255,255,255,.6) 0 1px, transparent 2px);
+      background-size:200px 200px;
+      animation:twinkle 4s ease-in-out infinite;
+    }
+    @keyframes twinkle{
+      0%,100%{opacity:.5}
+      50%{opacity:.9}
+    }
+
+    .heart-float{
+      position:fixed; left:50%; top:70%; pointer-events:none; z-index:2;
+      font-size:18px; opacity:.8; animation:heartUp 2.4s ease forwards;
+    }
+    .tap-fx{
+      position:fixed; pointer-events:none; z-index:6;
+      transform:translate(-50%,-50%);
+      font-size:16px; animation:tapPop 1.8s ease forwards;
+      white-space:nowrap;
+    }
+    @keyframes tapPop{
+      0%{transform:translate(-50%,-50%) scale(.9); opacity:0}
+      20%{opacity:1}
+      100%{transform:translate(-50%,-80px) scale(1.1); opacity:0}
+    }
+    @keyframes heartUp{
+      0%{transform:translate(-50%,0) scale(.8); opacity:.8}
+      100%{transform:translate(-50%,-120px) scale(1.2); opacity:0}
+    }
+
+    .slip-modal{
+      position:fixed; inset:0; background:rgba(0,0,0,.35);
+      display:none; align-items:center; justify-content:center; z-index:5;
+    }
+    .slip-modal.show{display:flex;}
+    .slip{
+      background:#fff9ef; border:2px dashed rgba(180,120,60,.35);
+      padding:18px; border-radius:14px; max-width:80vw; text-align:center;
+      box-shadow:0 16px 40px rgba(0,0,0,.2);
+      font-size:16px; line-height:1.6;
+    }
+
+    .music-btn{
+      position:fixed; left:16px; bottom:16px; z-index:6;
+      background:linear-gradient(90deg,#ff7aa2,#ffc86b);
+      color:#fff; border:none; border-radius:999px; padding:10px 14px;
+      font-family:var(--ui); font-size:14px; box-shadow:0 8px 18px rgba(120,40,40,.25);
+    }
     .wishmeta{
       font-family:var(--ui); font-size:12px; opacity:.7;
     }
     .ghost{
-      background:linear-gradient(90deg,#d8b36c,#f2d8a0); color:#4a351b;
+      background:linear-gradient(90deg,#7dd3ff,#8be6c9); color:#24524a;
     }
 
     .bubble{
@@ -365,6 +479,13 @@
 </head>
 <body>
   <div class="noise"></div>
+  <div class="twinkle"></div>
+  <div class="stickers">
+    <span class="sticker s1">🧸</span>
+    <span class="sticker s2">🌟</span>
+    <span class="sticker s3">🍬</span>
+    <span class="sticker s4">🎀</span>
+  </div>
   <div class="seal">祝</div>
   <div class="confetti" id="confetti"></div>
 
@@ -383,7 +504,7 @@
             小溜：
             <br/>这封信写在你18岁的门口，也写在你奔向六月的路上。你认真、倔强、又很温柔，
             我看见你把“我可以”一点点变成“我做到了”。成人礼是你身后第一道光，高考是你面前第一座山。
-            姐姐想说：你不是独自登山的人，我会一直在你身后，给你风、给你影、给你底气。
+            姐姐想说：你不是独自登山的人，我会一直在你身后，给你风、给你影、给你底气。✨
             <br/>我知道你有时候会焦虑，会走神，脑子里忽然冒出一些杂念，学习的节奏就被带走。
             这不代表你不够好，只是你太在意、太想把事情做好。你已经很努力了。
             以后当杂念来敲门时，不妨先对自己说一句“我先把眼前这一步做完”，
@@ -391,10 +512,10 @@
             <br/>学习是长跑，不是短冲。偶尔状态起伏、情绪波动都很正常。你可以和自己和解，
             不必把每一天都过成满分。把今天过好，把明天准备好，就已经很了不起。
             你要学会把目标拆小：这一题、这一页、这一小时。一步一步，山就不再高，路也会更清晰。
-            <br/>如果哪天心里乱了，就先把呼吸放慢；如果哪天不开心，就给自己一个拥抱。
+            <br/>如果哪天心里乱了，就先把呼吸放慢；如果哪天不开心，就给自己一个拥抱。🤍
             你可以允许自己脆弱，但也一定会一次次站起来。你的努力不会白费，你的坚持会慢慢开花。
             成绩只是你路上的一块路标，不是你的全部。你拥有的不止分数，还有温柔、勇气和聪明。
-            <br/>小溜，愿你在六月之前保持平静，在考场上稳稳发挥，在未来的每一条路上都能走得自在。
+            <br/>小溜，愿你在六月之前保持平静，在考场上稳稳发挥，在未来的每一条路上都能走得自在。🌈
             请你相信：再近一点，就到六月；再稳一点，就更接近自己想要的未来。
           </p>
 
@@ -409,6 +530,8 @@
           <div class="chip">愿你脚下稳</div>
           <div class="chip">愿你眼里有星</div>
           <div class="chip">愿你肩上有风</div>
+          <div class="chip">愿你步履从容</div>
+          <div class="chip">愿你笑意常在</div>
         </div>
         <div class="divider"></div>
         <div class="note">
@@ -422,22 +545,26 @@
       <h2>你的十八岁礼物 · 四封小锦囊</h2>
       <div class="grid">
         <div class="card pouch" data-title="坚定">
-          <h3>坚定</h3>
+          <div class="cord"></div>
+          <div class="pouch-title">坚定</div>
           <p class="pouch-closed">点我打开锦囊</p>
           <div class="pouch-content">别怕慢，只怕停。哪怕今天只前进了一点点，也在走向更好的自己。</div>
         </div>
         <div class="card pouch" data-title="从容">
-          <h3>从容</h3>
+          <div class="cord"></div>
+          <div class="pouch-title">从容</div>
           <p class="pouch-closed">轻轻点开</p>
           <div class="pouch-content">紧张是勇敢的另一种样子。把题目当作路标，慢慢读，慢慢答。</div>
         </div>
         <div class="card pouch" data-title="温柔">
-          <h3>温柔</h3>
+          <div class="cord"></div>
+          <div class="pouch-title">温柔</div>
           <p class="pouch-closed">悄悄打开</p>
           <div class="pouch-content">对自己温柔一点。你努力的样子，本身就很耀眼。</div>
         </div>
         <div class="card pouch" data-title="自由">
-          <h3>自由</h3>
+          <div class="cord"></div>
+          <div class="pouch-title">自由</div>
           <p class="pouch-closed">点我看看</p>
           <div class="pouch-content">十八岁意味着选择。你走的路，会成为你自己最喜欢的故事。</div>
         </div>
@@ -459,7 +586,7 @@
     <section class="section">
       <h2>小小鼓励</h2>
       <div class="interactive">
-        <div class="wishbox" id="wishBox">点按钮抽一句，今天也会被温柔对待。</div>
+        <div class="wishbox" id="wishBox">轻轻点开，心里就亮一点。</div>
         <div class="wishmeta" id="wishMeta"></div>
         <button class="btn" id="randomWish">抽一句</button>
         <button class="btn ghost" id="saveWish">收藏今天</button>
@@ -479,15 +606,23 @@
       <h2>姐姐给你的悄悄话</h2>
       <div class="interactive">
         <button class="btn" id="secretBtn">偷看一句</button>
-        <div class="bubble" id="secretBubble">我把好多喜欢都藏在这里了。</div>
+        <div class="bubble" id="secretBubble">每一句都只给你。</div>
       </div>
     </section>
 
     <div class="footer">愿你18岁起，勇敢、清醒、闪闪发亮。</div>
   </div>
 
+
+  <button class="music-btn" id="musicBtn">播放BGM</button>
+  <audio id="bgm" src="bgm.mp3" loop autoplay></audio>
+
   <script>
     const confetti = document.getElementById('confetti');
+    const slipModal = document.getElementById('slipModal');
+    const slipText = document.getElementById('slipText');
+    const musicBtn = document.getElementById('musicBtn');
+    const bgm = document.getElementById('bgm');
     const toggleLetter = document.getElementById('toggleLetter');
     const letterWrap = document.getElementById('letterWrap');
     const pouches = document.querySelectorAll('.pouch');
@@ -613,10 +748,12 @@
 
     buildMarquee();
     let autoPaused = false;
-    let userInteracting = false;
-    let resumeTimer = null;
-    const marqueeSpeed = 1.2; // px per frame
-    let autoPos = 0;
+    let dragging = false;
+    let startX = 0;
+    let startOffset = 0;
+    let offset = 0;
+    const marqueeSpeed = 75; // px per second
+    let lastTs = 0;
 
     function setPaused(paused){
       autoPaused = paused;
@@ -625,37 +762,151 @@
       }
     }
 
-    function onInteract(){
-      userInteracting = true;
-      if(resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(()=>{ userInteracting = false; }, 200);
+    function setOffset(val){
+      const half = marqueeTrack.scrollWidth / 2;
+      if(half > 0){
+        offset = ((val % half) + half) % half;
+      }else{
+        offset = val;
+      }
+      marqueeTrack.style.transform = `translateX(${-offset}px)`;
+    }
+
+    function onDown(e){
+      dragging = true;
+      marquee.classList.add('dragging');
+      setPaused(true);
+      startX = e.clientX;
+      startOffset = offset;
+      marquee.setPointerCapture(e.pointerId);
+    }
+
+    function onMove(e){
+      if(!dragging) return;
+      const dx = e.clientX - startX;
+      setOffset(startOffset - dx);
+    }
+
+    function onUp(e){
+      if(!dragging) return;
+      dragging = false;
+      marquee.classList.remove('dragging');
+      setPaused(false);
     }
 
     if(marquee){
-      marquee.addEventListener('touchstart', onInteract, {passive:true});
-      marquee.addEventListener('pointerdown', onInteract, {passive:true});
-      marquee.addEventListener('touchend', ()=>{ userInteracting = false; }, {passive:true});
-      marquee.addEventListener('pointerup', ()=>{ userInteracting = false; }, {passive:true});
+      marquee.addEventListener('pointerdown', onDown);
+      marquee.addEventListener('pointermove', onMove);
+      marquee.addEventListener('pointerup', onUp);
+      marquee.addEventListener('pointercancel', onUp);
+      marquee.addEventListener('pointerleave', onUp);
     }
 
-    function step(){
-      if(marquee && !autoPaused && !userInteracting){
-        autoPos += marqueeSpeed;
-        const half = marqueeTrack.scrollWidth / 2;
-        if(half > 0 && marquee.scrollLeft >= half){
-          autoPos = 0;
-        }
-        marquee.scrollLeft = Math.floor(autoPos);
+    function step(ts){
+      if(!lastTs) lastTs = ts;
+      const dt = (ts - lastTs) / 1000;
+      lastTs = ts;
+      if(!autoPaused && !dragging){
+        setOffset(offset + marqueeSpeed * dt);
       }
       requestAnimationFrame(step);
     }
-    step();
+    requestAnimationFrame(step);
 
     if(toggleMarquee){
       toggleMarquee.addEventListener('click', ()=>{
         setPaused(!autoPaused);
       });
     }
+
+    document.querySelectorAll('.sticker').forEach(s=>{
+      s.addEventListener('click', ()=>{
+        s.classList.remove('pop');
+        void s.offsetWidth;
+        s.classList.add('pop');
+      });
+    });
+
+    setInterval(()=>{
+      const h = document.createElement('div');
+      h.className = 'heart-float';
+      h.textContent = Math.random() > .5 ? '💖' : '💗';
+      h.style.left = `${10 + Math.random()*80}%`;
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(), 2500);
+    }, 1800);
+
+    if(musicBtn && bgm){
+      window.addEventListener('load', ()=>{
+        bgm.play().then(()=>{
+          musicBtn.textContent = '暂停BGM';
+        }).catch(()=>{});
+      });
+      musicBtn.addEventListener('click', ()=>{
+        if(bgm.paused){
+          bgm.play();
+          musicBtn.textContent = '暂停BGM';
+        }else{
+          bgm.pause();
+          musicBtn.textContent = '播放BGM';
+        }
+      });
+    }
+
+    function buildTapPhrases(){
+      const base = [
+        "认真审题","恭喜长大","加油呀","你可以的","稳住心态","微笑一下","慢慢来","别紧张",
+        "保持专注","你真棒","小星星","小爱心","好运降临","今天顺利","心里有光","不慌不忙",
+        "稳稳地","相信自己","慢慢读题","抓住重点","继续努力","我在你身后","冲呀","勇敢一点",
+        "轻轻松松","灵感来啦","好状态","继续闪光","要自信","深呼吸","向前走","小步快跑",
+        "心静一点","眼里有星","脚下有风","别怕错","重来就好","你很温柔","你很坚定","今天也很棒",
+        "恭喜升级","好好发挥","稳稳拿分","加一颗星","一切顺利","快乐学习","小确幸","小惊喜",
+        "轻轻一笑","好运上线","不急不躁","继续加油","好可爱","心软软","元气满满","星星闪闪",
+        "抱抱","向阳","热爱","坚持","认真","从容","踏实","勇敢","温暖","聪明","灵气","闪光",
+        "✨","💖","🌟","🎉","🍀","🌈","🧸","🎀","💫","🥳","😊","😺","🌼","🍬","🫶",
+        "你是小太阳","今天也很努力","做到就很好","一步一步来","别忘了休息","喜欢你","继续向上",
+        "可以再温柔一点","小小冠军","优雅发挥","稳准狠","稳稳当当","把焦虑放下","顺顺利利"
+      ];
+      const long = [
+        "就算慢一点，也是在向前走。","你已经很努力了，我都看见了。","把今天过好，就是很了不起。",
+        "每一次认真，都会悄悄加分。","别怕走神，回来就好。","一步一步来，路会变得很清晰。",
+        "你比自己想象的更强大。","把紧张当成认真，你会更稳。","今天也要为自己点赞。",
+        "你很会坚持，这就是你的底气。","把小目标拆开，一点点完成就很好。","记得多给自己一点温柔。",
+        "你已经在变好了，再坚持一下。","你的努力会有回响。","稳住节奏，不要急。",
+        "哪怕只进步一点点，也值得开心。","做完这一题，你就赢了一小步。","不必完美，只要尽力。",
+        "现在的你，正在靠近想要的未来。","你是家人眼里的小骄傲。"
+      ];
+      const emoji = ["✨","💖","🌟","🎉","🍀","🌈","🧸","🎀","💫","🥳","😊","😺","🌼","🍬","🫶","🌤️","🦋","🌷"];
+      const list = base.slice();
+      long.forEach(t=>{
+        list.push(t);
+        list.push(`${t} ${emoji[Math.floor(Math.random()*emoji.length)]}`);
+      });
+      // 扩展到 >= 300 条
+      while(list.length < 300){
+        const t = base[list.length % base.length];
+        const e = emoji[list.length % emoji.length];
+        list.push(`${t} ${e}`);
+      }
+      return list;
+    }
+    const tapPhrases = buildTapPhrases();
+
+    function spawnTapFx(x, y){
+      const el = document.createElement('div');
+      el.className = 'tap-fx';
+      const text = tapPhrases[Math.floor(Math.random()*tapPhrases.length)];
+      const icon = Math.random() > 0.5 ? '✨' : '💖';
+      el.textContent = Math.random() > 0.5 ? `${icon} ${text}` : `${text} ${icon}`;
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 1800);
+    }
+
+    document.addEventListener('click', (e)=>{
+      spawnTapFx(e.clientX, e.clientY);
+    });
 
     function buildWishes(){
 
