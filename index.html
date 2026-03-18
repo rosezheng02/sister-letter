@@ -615,7 +615,8 @@
     let autoPaused = false;
     let userInteracting = false;
     let resumeTimer = null;
-    const marqueeSpeed = 0.25; // px per frame
+    const marqueeSpeed = 1.2; // px per frame
+    let autoPos = 0;
 
     function setPaused(paused){
       autoPaused = paused;
@@ -633,16 +634,18 @@
     if(marquee){
       marquee.addEventListener('touchstart', onInteract, {passive:true});
       marquee.addEventListener('pointerdown', onInteract, {passive:true});
-      marquee.addEventListener('scroll', onInteract, {passive:true});
+      marquee.addEventListener('touchend', ()=>{ userInteracting = false; }, {passive:true});
+      marquee.addEventListener('pointerup', ()=>{ userInteracting = false; }, {passive:true});
     }
 
     function step(){
       if(marquee && !autoPaused && !userInteracting){
-        marquee.scrollLeft += marqueeSpeed;
+        autoPos += marqueeSpeed;
         const half = marqueeTrack.scrollWidth / 2;
         if(half > 0 && marquee.scrollLeft >= half){
-          marquee.scrollLeft = 0;
+          autoPos = 0;
         }
+        marquee.scrollLeft = Math.floor(autoPos);
       }
       requestAnimationFrame(step);
     }
