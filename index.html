@@ -439,11 +439,24 @@
       padding:16px;
     }
     .lightbox.show{display:flex;}
+    .lightbox-inner{
+      position:relative; max-width:92vw; max-height:90vh;
+    }
     .lightbox img{
       max-width:92vw; max-height:90vh; object-fit:contain;
       border-radius:12px; box-shadow:0 18px 40px rgba(0,0,0,.35);
       background:#111;
+      transform:scale(1);
+      transition:transform .2s ease;
     }
+    .lightbox-controls{
+      position:absolute; right:8px; top:-46px; display:flex; gap:8px;
+    }
+    .lightbox-controls button{
+      background:rgba(0,0,0,.6); color:#fff; border:none; border-radius:999px;
+      padding:6px 10px; font-size:14px; font-family:var(--ui);
+    }
+    .no-scroll{overflow:hidden;}
 
     .music-btn{
       position:fixed; left:16px; bottom:16px; z-index:6;
@@ -630,10 +643,17 @@
 
 
   <button class="music-btn" id="musicBtn">播放BGM</button>
-  <audio id="bgm" src="bgm.mp3" loop autoplay></audio>
+  <audio id="bgm" src="bgm.mp3" loop autoplay preload="auto"></audio>
 
   <div class="lightbox" id="lightbox">
-    <img id="lightboxImg" alt="photo" />
+    <div class="lightbox-inner">
+      <div class="lightbox-controls">
+        <button id="zoomIn">放大</button>
+        <button id="zoomOut">缩小</button>
+        <button id="zoomReset">复位</button>
+      </div>
+      <img id="lightboxImg" alt="photo" />
+    </div>
   </div>
 
   <script>
@@ -644,6 +664,9 @@
     const bgm = document.getElementById('bgm');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
+    const zoomIn = document.getElementById('zoomIn');
+    const zoomOut = document.getElementById('zoomOut');
+    const zoomReset = document.getElementById('zoomReset');
     const toggleLetter = document.getElementById('toggleLetter');
     const letterWrap = document.getElementById('letterWrap');
     const pouches = document.querySelectorAll('.pouch');
@@ -828,9 +851,33 @@
         const img = e.target.closest('img');
         if(!img) return;
         lightboxImg.src = img.getAttribute('data-src') || img.src;
+        lightboxImg.style.transform = 'scale(1)';
         lightbox.classList.add('show');
+        document.body.classList.add('no-scroll');
       });
-      lightbox.addEventListener('click', ()=> lightbox.classList.remove('show'));
+      lightbox.addEventListener('click', (e)=>{
+        if(e.target === lightbox){
+          lightbox.classList.remove('show');
+          document.body.classList.remove('no-scroll');
+        }
+      });
+    }
+
+    let zoom = 1;
+    function applyZoom(){ lightboxImg.style.transform = `scale(${zoom})`; }
+    if(zoomIn) zoomIn.addEventListener('click', ()=>{ zoom = Math.min(3, zoom+0.25); applyZoom(); });
+    if(zoomOut) zoomOut.addEventListener('click', ()=>{ zoom = Math.max(1, zoom-0.25); applyZoom(); });
+    if(zoomReset) zoomReset.addEventListener('click', ()=>{ zoom = 1; applyZoom(); });
+    if(lightboxImg){
+      let lastTap = 0;
+      lightboxImg.addEventListener('click', ()=>{
+        const now = Date.now();
+        if(now - lastTap < 300){
+          zoom = zoom > 1 ? 1 : 2;
+          applyZoom();
+        }
+        lastTap = now;
+      });
     }
 
     function step(ts){
