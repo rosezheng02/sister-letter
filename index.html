@@ -836,7 +836,8 @@
         const img = e.target.closest('img');
         if(!img) return;
         lightboxImg.src = img.getAttribute('data-src') || img.src;
-        lightboxImg.style.transform = 'scale(1)';
+        pinchScale = 1; panX = 0; panY = 0;
+        lightboxImg.style.transform = 'translate(0,0) scale(1)';
         lightbox.classList.add('show');
         document.body.classList.add('no-scroll');
       });
@@ -848,10 +849,14 @@
       });
     }
 
-    // Pinch-to-zoom inside lightbox image (keeps page zoom disabled)
+    // Pinch-to-zoom + pan inside lightbox image (keeps page zoom disabled)
     let pinchScale = 1;
     let startDist = 0;
     let startScale = 1;
+    let panX = 0;
+    let panY = 0;
+    let panStartX = 0;
+    let panStartY = 0;
     function getDist(t1, t2){
       const dx = t1.clientX - t2.clientX;
       const dy = t1.clientY - t2.clientY;
@@ -862,6 +867,9 @@
         if(e.touches.length === 2){
           startDist = getDist(e.touches[0], e.touches[1]);
           startScale = pinchScale;
+        }else if(e.touches.length === 1 && pinchScale > 1){
+          panStartX = e.touches[0].clientX - panX;
+          panStartY = e.touches[0].clientY - panY;
         }
       }, {passive:false});
       lightboxImg.addEventListener('touchmove', (e)=>{
@@ -870,12 +878,19 @@
           const dist = getDist(e.touches[0], e.touches[1]);
           const scale = Math.min(3, Math.max(1, startScale * (dist / startDist)));
           pinchScale = scale;
-          lightboxImg.style.transform = `scale(${pinchScale})`;
+          lightboxImg.style.transform = `translate(${panX}px, ${panY}px) scale(${pinchScale})`;
+        }else if(e.touches.length === 1 && pinchScale > 1){
+          e.preventDefault();
+          panX = e.touches[0].clientX - panStartX;
+          panY = e.touches[0].clientY - panStartY;
+          lightboxImg.style.transform = `translate(${panX}px, ${panY}px) scale(${pinchScale})`;
         }
       }, {passive:false});
       lightboxImg.addEventListener('touchend', ()=>{
         if(pinchScale < 1) pinchScale = 1;
         if(pinchScale > 3) pinchScale = 3;
+        if(pinchScale === 1){ panX = 0; panY = 0; }
+        lightboxImg.style.transform = `translate(${panX}px, ${panY}px) scale(${pinchScale})`;
       });
     }
 
