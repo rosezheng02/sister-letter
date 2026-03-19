@@ -941,11 +941,14 @@
             musicBtn.textContent = '暂停BGM';
           }).catch(()=>{});
         }
-        document.removeEventListener('click', unlockAudio);
-        document.removeEventListener('touchstart', unlockAudio);
+        document.removeEventListener('click', unlockAudio, true);
+        document.removeEventListener('touchstart', unlockAudio, true);
+        document.removeEventListener('pointerdown', unlockAudio, true);
       };
-      document.addEventListener('click', unlockAudio);
-      document.addEventListener('touchstart', unlockAudio, {passive:true});
+      // capture phase to ensure first user gesture is caught
+      document.addEventListener('click', unlockAudio, true);
+      document.addEventListener('touchstart', unlockAudio, true);
+      document.addEventListener('pointerdown', unlockAudio, true);
       musicBtn.addEventListener('click', ()=>{
         if(bgm.paused){
           bgm.play();
