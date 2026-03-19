@@ -433,6 +433,18 @@
       font-size:16px; line-height:1.6;
     }
 
+    .lightbox{
+      position:fixed; inset:0; background:rgba(0,0,0,.7);
+      display:none; align-items:center; justify-content:center; z-index:7;
+      padding:16px;
+    }
+    .lightbox.show{display:flex;}
+    .lightbox img{
+      max-width:92vw; max-height:90vh; object-fit:contain;
+      border-radius:12px; box-shadow:0 18px 40px rgba(0,0,0,.35);
+      background:#111;
+    }
+
     .music-btn{
       position:fixed; left:16px; bottom:16px; z-index:6;
       background:linear-gradient(90deg,#ff7aa2,#ffc86b);
@@ -620,12 +632,18 @@
   <button class="music-btn" id="musicBtn">播放BGM</button>
   <audio id="bgm" src="bgm.mp3" loop autoplay></audio>
 
+  <div class="lightbox" id="lightbox">
+    <img id="lightboxImg" alt="photo" />
+  </div>
+
   <script>
     const confetti = document.getElementById('confetti');
     const slipModal = document.getElementById('slipModal');
     const slipText = document.getElementById('slipText');
     const musicBtn = document.getElementById('musicBtn');
     const bgm = document.getElementById('bgm');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
     const toggleLetter = document.getElementById('toggleLetter');
     const letterWrap = document.getElementById('letterWrap');
     const pouches = document.querySelectorAll('.pouch');
@@ -682,14 +700,14 @@
     }
     const fileNames = [
   "SJTU雨天草坪_妹妹的青春.jpg",
-  "东方明珠_城市与她.jpg",
+  "东方明珠_向往未来.jpg",
   "书院合影_并肩的夏天.jpg",
   "云端一刻_把风景装进口袋.jpg",
-  "交大校门_我的步伐.jpg",
+  "交大校门_你的步伐.jpg",
   "交大欢迎你_青春打卡.jpg",
   "仰望天际线_梦想向上.jpg",
   "仰望高楼_姐妹团的夜.jpg",
-  "初九拜天公_火光里的家.jpg",
+  "初九拜天公_火光里的温暖.jpg",
   "卧室自拍_姐妹的默契.jpg",
   "团圆一刻_家人围坐.jpg",
   "图书馆之光_静静闪耀.jpg",
@@ -705,10 +723,11 @@
   "小店自拍_姐妹比耶.jpg",
   "小桥春风_三人同框.jpg",
   "小车上的捣蛋鬼.jpg",
-  "小院合影_童年的四格.jpg",
-  "小院探险_抱着绳子的我.jpg",
+  "小院合影_诡异的特效.jpg",
+  "小院探险_傻愣愣的你.jpg",
   "山顶远眺_心怀山海.jpg",
   "年味合影_家门口的记忆.jpg",
+  "店前合影_我们一起长大.jpg",
   "庭院童年_憨憨的小溜.jpg",
   "思源湖畔_笑对晴空.jpg",
   "惊喜合影_都市心跳.jpg",
@@ -722,7 +741,7 @@
   "海边合影_一路长大的我们.jpg",
   "海风童年_并肩看远方.jpg",
   "湖边毕业礼_姐姐光芒_妹妹相伴.jpg",
-  "田埂童年_红格笑脸.jpg",
+  "田埂童年_笑到没眼睛.jpg",
   "窗边毕业礼_姐姐毕业_妹妹在旁.jpg",
   "童年伙伴_肩并肩.jpg",
   "童年合影_一起长大的日子.jpg",
@@ -730,8 +749,7 @@
   "童年相依_小手牵小手.jpg",
   "竹林合影_姐姐妹妹出游.jpg",
   "老照片_灿烂的笑脸.jpg",
-  "草坪展翅_勇敢的她.jpg",
-  "街口合影_我们一起长大.jpg",
+  "草坪展翅_满怀希望的你.jpg",
   "证件照_最早的模样.jpg",
   "贴贴合影_我们的笑容.jpg",
   "门口合影_三朵小花.jpg",
@@ -745,7 +763,7 @@
 
     function buildMarquee(){
       if(!marqueeTrack) return;
-      const items = photoList.map(p=>`<div class=\"marquee-item\"><img src=\"${p.src}\" alt=\"${p.caption}\" /><div class=\"cap\">${p.caption}</div></div>`).join('');
+      const items = photoList.map(p=>`<div class=\"marquee-item\"><img src=\"${p.src}\" alt=\"${p.caption}\" data-src=\"${p.src}\" /><div class=\"cap\">${p.caption}</div></div>`).join('');
       marqueeTrack.innerHTML = items + items;
     }
 
@@ -805,6 +823,16 @@
       marquee.addEventListener('pointerleave', onUp);
     }
 
+    if(lightbox && lightboxImg){
+      marqueeTrack.addEventListener('click', (e)=>{
+        const img = e.target.closest('img');
+        if(!img) return;
+        lightboxImg.src = img.getAttribute('data-src') || img.src;
+        lightbox.classList.add('show');
+      });
+      lightbox.addEventListener('click', ()=> lightbox.classList.remove('show'));
+    }
+
     function step(ts){
       if(!lastTs) lastTs = ts;
       const dt = (ts - lastTs) / 1000;
@@ -845,6 +873,17 @@
           musicBtn.textContent = '暂停BGM';
         }).catch(()=>{});
       });
+      const unlockAudio = ()=>{
+        if(bgm.paused){
+          bgm.play().then(()=>{
+            musicBtn.textContent = '暂停BGM';
+          }).catch(()=>{});
+        }
+        document.removeEventListener('click', unlockAudio);
+        document.removeEventListener('touchstart', unlockAudio);
+      };
+      document.addEventListener('click', unlockAudio);
+      document.addEventListener('touchstart', unlockAudio, {passive:true});
       musicBtn.addEventListener('click', ()=>{
         if(bgm.paused){
           bgm.play();
